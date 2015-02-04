@@ -1,8 +1,7 @@
-Download
-========
-To download a copy of this repo sans the .git dir:
+Allehanda
+=========
 
-    curl -L https://github.com/ramn/scala-template-project/archive/master.tar.gz | tar xzf -
+Miscellaneous utility classes.
 
 Test
 ====
