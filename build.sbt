@@ -16,7 +16,7 @@ lazy val root = Project(
       //"-language:existentials",
       //"-language:higherKinds",
       //"-language:implicitConversions",
-      "-Xfatal-warnings",
+      //"-Xfatal-warnings",
       "-Xlint",
       "-Yno-adapted-args",
       "-Ywarn-dead-code",        // N.B. doesn't work well with the ??? hole
