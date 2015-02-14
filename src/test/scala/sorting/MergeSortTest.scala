@@ -4,9 +4,15 @@ import org.scalatest.FunSuite
 
 
 class MergeSortTest extends FunSuite {
-  test("sorting of small shuffled list") {
+  test("sorting of small list of ints") {
     assertResult(List(1,2,3,4)) {
       MergeSort(List(3,1,4,2))
+    }
+  }
+
+  test("sort list of doubles") {
+    assertResult(List(-0.1, 0.1, 1.2, 1.3, 2.0, 2.9)) {
+      MergeSort(List(2.9, 1.2, -0.1, 1.3, 2.0, 0.1))
     }
   }
 
