@@ -1,10 +1,11 @@
 package se.ramn.sorting
 
 import annotation.tailrec
+import scala.math.Ordering.Implicits._
 
 
 object MergeSort {
-  def apply[T : Ordering](xs: List[T]): List[T] = {
+  def apply[T : Numeric](xs: List[T]): List[T] = {
     val n = xs.length / 2
     if (n == 0)
       xs
@@ -15,16 +16,15 @@ object MergeSort {
   }
 
   @tailrec
-  private def merge[T](
+  private def merge[T : Numeric](
     xs: List[T],
     ys: List[T],
     res: List[T]
-  )(implicit ord: Ordering[T]): List[T] =
+  ): List[T] =
     (xs, ys) match {
       case (Nil, ys) => concatReverse(res, ys)
       case (xs, Nil) => concatReverse(res, xs)
       case (x :: xtail, y :: ytail) =>
-        import ord.mkOrderingOps
         if (x < y) merge(xtail, ys, x :: res)
         else merge(xs, ytail, y :: res)
     }
