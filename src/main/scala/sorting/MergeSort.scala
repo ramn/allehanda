@@ -5,7 +5,7 @@ import scala.math.Ordering.Implicits._
 
 
 object MergeSort {
-  def apply[T : Numeric](xs: Seq[T]): Seq[T] = {
+  def apply[T : Ordering](xs: Seq[T]): Seq[T] = {
     val n = xs.length / 2
     if (n == 0)
       xs
@@ -16,7 +16,7 @@ object MergeSort {
   }
 
   @tailrec
-  private def merge[T : Numeric](
+  private def merge[T : Ordering](
     xs: Seq[T],
     ys: Seq[T],
     sortedPrefix: Seq[T]

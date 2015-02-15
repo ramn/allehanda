@@ -28,6 +28,12 @@ class MergeSortTest extends FunSuite {
     }
   }
 
+  test("sort strings") {
+    assertResult(Seq("a", "aa", "ab", "c")) {
+      MergeSort(Seq("ab", "c", "aa", "a"))
+    }
+  }
+
   //test("big list") {
     //val xs = util.Random.shuffle(0 to 1000000).toList
     //assertResult(xs.sorted) {
