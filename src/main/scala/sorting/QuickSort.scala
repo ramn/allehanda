@@ -38,7 +38,6 @@ private object InplaceQuickSort {
   private def sort[T : Ordering](xs: Array[T], lo: Int, hi: Int): Unit = {
     if (hi > lo) {
       val pivotIx = partition(xs, lo, hi)
-      require(pivotIx >= lo && pivotIx <= hi)
       sort(xs, lo, pivotIx - 1)
       sort(xs, pivotIx + 1, hi)
     }
