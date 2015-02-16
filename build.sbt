@@ -31,7 +31,12 @@ lazy val root = Project(
     resolvers += "Typesafe releases" at "http://repo.typesafe.com/typesafe/releases",
     libraryDependencies ++= Seq(
       "org.scalatest" %% "scalatest" % "2.2.2" % "test",
-      "org.scalamock" %% "scalamock-scalatest-support" % "3.1.2" % "test"
+      "org.scalamock" %% "scalamock-scalatest-support" % "3.1.2" % "test",
+      "com.storm-enroute" %% "scalameter" % "0.6"
     )
+
+    // Uncomment these two lines to enable performance test
+    //,testFrameworks += new TestFramework("org.scalameter.ScalaMeterFramework")
+    //,parallelExecution in Test := false
   )
 )
