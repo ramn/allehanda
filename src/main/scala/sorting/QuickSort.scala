@@ -31,7 +31,7 @@ private object InplaceQuickSort {
   private def shuffle[T](xs: Array[T]) = {
     val len = xs.length
     for (i <- 0 until len) {
-      exchange(xs, i, Random.nextInt(len))
+      exchange(xs, i, i + Random.nextInt(len - i))
     }
   }
 
