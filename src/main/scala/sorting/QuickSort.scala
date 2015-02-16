@@ -53,24 +53,15 @@ private object InplaceQuickSort {
    * @return pivot index
    */
   private def partition[T : Ordering](xs: Array[T], initLo: Int, initHi: Int): Int = {
-    var lo = initLo + 1
-    var hi = initHi
     val pivot = xs(initLo)
-    var pivotIx = initLo
-
-    while (lo <= hi) {
-      if (xs(lo) < pivot) {
-        exchange(xs, lo, pivotIx)
-        pivotIx += 1
-        lo += 1
-      } else if (xs(lo) > pivot) {
-        exchange(xs, lo, hi)
-        hi -= 1
-      } else {
-        lo += 1
-      }
+    var lo = initLo
+    var hi = initHi
+    while (lo < hi) {
+      while (xs(lo) < pivot) { lo += 1 }
+      while (xs(hi) > pivot) { hi -=1 }
+      exchange(xs, lo, hi)
     }
-    pivotIx
+    lo
   }
 
   private def exchange[T](xs: Array[T], i: Int, j: Int) = {
