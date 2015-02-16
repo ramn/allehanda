@@ -23,7 +23,7 @@ object QuickSort {
 
 
 private object InplaceQuickSort {
-  def sortInplace[T : Ordering : ClassTag](unsorted: Array[T]): Unit = {
+  def sortInplace[T : Ordering](unsorted: Array[T]): Unit = {
     shuffle(unsorted)
     sort(unsorted, 0, unsorted.length - 1)
   }
