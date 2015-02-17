@@ -9,6 +9,17 @@ object CountSort {
     radix: Int,
     key: T => Int
   ): Iterable[T] = {
+    val sorted: Array[T] = Array.ofDim(unsorted.size)
+    unsafeSortUsingAuxiliary(unsorted, radix, key, sorted)
+    sorted.toIterable
+  }
+
+  def unsafeSortUsingAuxiliary[T : ClassTag](
+    unsorted: Iterable[T],
+    radix: Int,
+    key: T => Int,
+    auxiliary: Array[T]
+  ): Unit = {
     require(unsorted.size > 0)
     require(radix > 0)
 
@@ -26,15 +37,12 @@ object CountSort {
     }
 
     // Put items in the sorted order, in a new array
-    val sorted: Array[T] = Array.ofDim(unsorted.size)
     for (item <- unsorted) {
       val keyForItem = key(item)
       val indexWhenSorted = counts(keyForItem)
-      sorted(indexWhenSorted) = item
+      auxiliary(indexWhenSorted) = item
       counts(keyForItem) += 1
     }
-
-    sorted.toIterable
   }
 
   def apply(unsorted: Iterable[Int], radix: Int): Iterable[Int] = {
