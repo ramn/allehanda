@@ -12,18 +12,26 @@ object RadixLSDSort {
     stringLength: Int,
     radix: Int = 256
   ): Iterable[String] = {
-    var sorted: IndexedSeq[String] = unsorted.toIndexedSeq
-    val auxiliary = Array.ofDim[String](unsorted.size)
+    val toSort = unsorted.toArray.clone
+    unsafeSortInplace(toSort, stringLength, radix)
+    toSort.toIndexedSeq
+  }
 
+  def unsafeSortInplace(
+    toSort: Array[String],
+    stringLength: Int,
+    radix: Int = 256
+  ): Unit = {
+    val n = toSort.size
+    val auxiliary = Array.ofDim[String](n)
     for (d <- (stringLength - 1) to 0 by -1) {
       CountSort.unsafeSortUsingAuxiliary(
-        sorted,
+        toSort,
         radix,
         (s: String) => s.charAt(d).toInt,
         auxiliary
         )
-      sorted = auxiliary.toIndexedSeq
+      auxiliary.copyToArray(toSort)
     }
-    sorted.toIterable
   }
 }
