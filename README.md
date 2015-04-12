@@ -1,7 +1,7 @@
 Allehanda
 =========
 
-Miscellaneous utility classes.
+Miscellaneous algorithms and data structures.
 
 Test
 ====
